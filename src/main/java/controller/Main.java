@@ -43,7 +43,7 @@ public class Main {
 
             opcao = menu.nextInt();
             switch (opcao){
-                case 0: //Sair da applicação
+                case 0:
                     Utils.limparTela();
                     System.out.println("Volte Sempre!!");
                     System.exit(0);
