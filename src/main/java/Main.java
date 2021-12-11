@@ -1,101 +1,52 @@
-package controller;
+import java.math.BigDecimal;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
-import utils.Utils;
-
-import java.util.Scanner;
+import static utils.MainMenu.menuPrincipal;
+import model.*;
+import controller.*;
+import repository.SellerRepository;
 
 public class Main {
     public static void main(String[] args) {
 
-        menuPrincipal();
+        //menuPrincipal();
+        SellerRepository sellerRepository = new SellerRepository();
+        sellerRepository.sellers = InsertSellersController.insertSellers();
+        //TODO insert it in seller menu dinamic
+        for (Seller seller: sellerRepository.sellers) {
+            System.out.println(seller.getName());
+        }
+        List<Sale> sales = new LinkedList<>();
+
+        Sale sale = new Sale();
+        sale.setCustomerName("jdklf");
+        sale.setSaleValue(new BigDecimal("900.00"));
+        sale.setSaleItemName("venda1");
+        String name = "Leia Organa";
+        sale.setSeller(sellerRepository.sellers.stream().filter( seller -> name.equals(seller.getName())).findAny().orElseThrow());
+        sale.getSeller().setSalesAmount(sale.getSeller().getSalesAmount() + 1);
+
+        Sale sale1 = new Sale();
+        sale1.setCustomerName("jdklf");
+        sale1.setSaleValue(new BigDecimal("900.00"));
+        sale1.setSaleItemName("venda2");
+        //TODO set sale name by variable
+        sale1.setSeller(sellerRepository.sellers.stream().filter( seller -> name.equals(seller.getName())).findAny().orElseThrow());
+        sale1.getSeller().setSalesAmount(sale1.getSeller().getSalesAmount() + 1);
+
+        sales.add(sale);
+        sales.add(sale1);
+
+
+        // TODO Use this in sale print controller or service
+        for (Sale saleIt: sales) {
+            System.out.println(saleIt.toString());
+        }
+
     }
 
-    //MENU PRINCIPAL
-    private static void menuPrincipal() {
-        Scanner menu = new Scanner(System.in);
-        int opcao;
-
-        do {System.out.println("*************************************************************");
-            System.out.println("*----------------!! COMPRE DE TUDO !!----------------*");
-            System.out.println("*************************************************************");
-            System.out.println("1 - Mostrar Produtos");
-            System.out.println("2 - Comprar");
-            System.out.println("3 - Sacola");
-            System.out.println("4 - Confirmar compra");
-            System.out.println("*************************************************************");
-            System.out.println("Digite uma opção de 1 a 4 ou digite 0 para sair: ");
-
-            opcao = menu.nextInt();
-            switch (opcao){
-                case 0:
-                    Utils.limparTela();
-                    System.out.println("Volte Sempre!!");
-                    System.exit(0);
-                    break;
-                case 1:
-                    Utils.limparTela();
-                    mostrarProdutos();
-                    //?System.out.println("Escolha o produto desejado");
-                    //Scanner sc = new Scanner(System.in);
-//                    Utils.limparTela();
-                    break;
-                case 2:
-                    Utils.limparTela();
-                    //System.out.println("Digite o código do produto que você quer comprar");
-                    Utils.limparTela();
-                    break;
-                case 3:
-                    Utils.limparTela();
-                    //mostrarsacolacomitensescolhidos();
-                    Utils.limparTela();
-                case 4:
-                    Utils.limparTela();
-                    System.out.println("Obrigada por comprar conosco");
-                    System.exit(0);
-                    break;
-
-                    //if(sacola = comprafinalizada || sacola = sacolavazia){
-                    //System.out.println("Carrinho vazio!!);
-                    //}
-            }
-
-        }while (opcao != -1);
-    }
-
-    public static void mostrarProdutos(){
-        Produto lojaantunes = new Produto();
-        lojaantunes.setNomeDoProduto("Batom");
-        lojaantunes.setIdProduto(1);
-        lojaantunes.setPrecodoProduro(3.99);
-        lojaantunes.setEstoque(3);
-        System.out.println(lojaantunes.toString());
-
-        Produto lojasantos = new Produto();
-        lojasantos.setNomeDoProduto("Anel Cinderela");
-        lojasantos.setIdProduto(2);
-        lojasantos.setPrecodoProduro(10.00);
-        lojasantos.setEstoque(6);
-        System.out.println(lojasantos.toString());
-
-        Produto lojaferreira = new Produto();
-        lojaferreira.setNomeDoProduto("Chave de Fenda");
-        lojaferreira.setIdProduto(3);
-        lojaferreira.setPrecodoProduro(5.36);
-        lojaferreira.setEstoque(9);
-        System.out.println(lojaferreira.toString());
-
-        Produto lojasalgueiro = new Produto();
-        lojasalgueiro.setNomeDoProduto("Coxinha Congelada");
-        lojasalgueiro.setIdProduto(4);
-        lojasalgueiro.setPrecodoProduro(5.99);
-        lojasalgueiro.setEstoque(30);
-        System.out.println(lojasalgueiro.toString());
-
-        Produto lojafigueira = new Produto();
-        lojafigueira.setNomeDoProduto("Figo em conserva");
-        lojafigueira.setIdProduto(5);
-        lojafigueira.setPrecodoProduro(12.35);
-        lojafigueira.setEstoque(10);
-        System.out.println(lojafigueira.toString());
-    }
 }
