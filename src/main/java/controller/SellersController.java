@@ -1,12 +1,12 @@
 package controller;
 
 import model.Seller;
+import repository.SellerRepository;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class InsertSellersController {
-
+public class SellersController {
     private static final String[] NAMES = {"The Doctor", "Sarah Connor", "Luke Skywalker", "Arthur Dent", "Leia Organa"};
     private static final Long INITIAL_SALES_AMOUNT = 0L;
 
@@ -22,14 +22,17 @@ public class InsertSellersController {
         seller3.setName(NAMES[3]);
         Seller seller4 = new Seller();
         seller4.setName(NAMES[4]);
-
         List<Seller> sellers = new LinkedList<>();
         sellers.add(seller);
         sellers.add(seller1);
         sellers.add(seller2);
         sellers.add(seller3);
         sellers.add(seller4);
-
         return sellers;
+    }
+
+    public static void showSellers() {
+        SellerRepository sellerRepository = new SellerRepository();
+        sellerRepository.showSellers();
     }
 }

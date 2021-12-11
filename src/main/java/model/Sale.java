@@ -11,7 +11,7 @@ public class Sale {
 
     private String saleItemName;
 
-    private BigDecimal saleValue;
+    private double saleValue;
 
     private Seller seller;
 
