@@ -32,7 +32,7 @@ seller name other than the five available.
 
 ## How this project was developed
 
-Following the case specifications, the project consists of a console application with data input from StdIn and output to StdOut. Developed using the Java language with OpenJdk 11 and Intellij Idea IDE, and also Maven as a dependency and build management tool.
+Following the case specifications, the project consists of a console application with data input from Stdin and output to Stdout. Developed using the Java language with OpenJdk 11 and Intellij Idea IDE, and also Maven as a dependency and build management tool.
 
 ## How I Run This Project
 
@@ -46,5 +46,31 @@ First, you must have the following tools on your local machine:
 - Maven: I reccomend use the latest version. [See here to install](https://maven.apache.org/install.html)
 - Java IDE: I recommend use the Intellij Idea. [See here to install](https://www.jetbrains.com/pt-br/idea/download/)
 
+:arrow_right: First, download the project using the command:
+```shell
+git clone git@github.com:ldsleticia/Shopee-Case.git
+```
 
+:arrow_right: And now, import the project in your java IDE, and run the Main.java file, like this:
+
+<p align="left">
+  <img alt="main execution" width="auto" height="auto" src="https://github.com/ldsleticia/Shopee-Case/blob/main/git-repo-assets/run-Main-by-Ide.png" />
+</p>
+
+
+If you prefer execute this project via command line, after download and inside the project directory, run the following commands to build by Maven and execute the jar file:
+```shell
+maven clean install
+cd target
+java -jar shopee-case-1.0-SNAPSHOT.jar
+```
+
+### Dockerized Execution
+
+You can get the project image and see the execution instructions at: [https://hub.docker.com/repository/docker/ldsleticia/shopee-case](https://hub.docker.com/repository/docker/ldsleticia/shopee-case)
+
+Or execute the following command in your terminal, to get the image and run in the interactive terminal (:heavy_exclamation_mark: the docker needs to run interactively):
+```shell
+docker run -it ldsleticia/shopee-case:latest
+```
 
