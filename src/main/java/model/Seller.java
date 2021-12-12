@@ -7,6 +7,7 @@ public class Seller {
 
     private String name;
 
-    private Long salesAmount = 0L;
+    private Long salesAmount;
 
+    private Double amountSalesValue;
 }

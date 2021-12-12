@@ -2,8 +2,6 @@ package model;
 
 import lombok.Data;
 
-import java.math.BigDecimal;
-
 @Data
 public class Sale {
 
@@ -11,8 +9,16 @@ public class Sale {
 
     private String saleItemName;
 
-    private double saleValue;
+    private Double saleValue;
 
     private Seller seller;
+
+    public Long getSellerSalesAmount() {
+        return this.seller.getSalesAmount();
+    }
+
+    public Double getSellerValueSalesAmount() {
+        return this.seller.getAmountSalesValue();
+    }
 
 }
