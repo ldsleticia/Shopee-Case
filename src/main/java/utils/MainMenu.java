@@ -2,11 +2,7 @@ package utils;
 
 import controller.SalesController;
 import controller.SellersController;
-import model.Sale;
-import repository.SaleRepository;
-import repository.SellerRepository;
 
-import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class MainMenu {
@@ -31,32 +27,29 @@ public class MainMenu {
             menuOption = scanner.nextInt();
             switch (menuOption) {
                 case -1:
-                    //MenuUtils.clearScreen();
                     System.out.println("Thanks for using the marketplace shopee, see you soon!");
-                    //MenuUtils.clearScreen();
+                    scanner.close();
                     break;
                 case 1:
-                    //MenuUtils.clearScreen();
                     SellersController.showSellers();
+                    System.out.print("\n");
                     break;
                 case 2:
-                    //MenuUtils.clearScreen();
                     SalesController.readSaleInput();
                     System.out.print("\n");
                     SalesController.showSalesCallback();
-                    //MenuUtils.clearScreen();
+                    System.out.print("\n");
                     break;
                 case 3:
-                    //MenuUtils.clearScreen();
                     SalesController.showSalesCallback();
+                    System.out.print("\n");
                     break;
                 case 4:
                     SalesController.showSalesBySellerSalesAmount();
+                    System.out.print("\n");
                     break;
                 default:
-                    //MenuUtils.clearScreen();
                     System.out.println("Incorrect option, please check available options and retype...");
-                    //MenuUtils.clearScreen();
             }
         }
     }

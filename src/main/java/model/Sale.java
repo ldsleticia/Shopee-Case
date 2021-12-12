@@ -2,12 +2,16 @@ package model;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class Sale {
 
     private String customerName;
 
     private String saleItemName;
+
+    private LocalDateTime saleDateTime;
 
     private Double saleValue;
 

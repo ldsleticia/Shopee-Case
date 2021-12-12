@@ -8,7 +8,7 @@ public class SellerRepository {
     public static List<Seller> sellers = new LinkedList<>();
 
     public void showSellers() {
-        for (Seller seller: this.sellers) {
+        for (Seller seller: sellers) {
             System.out.println(seller.getName());
         }
     }
