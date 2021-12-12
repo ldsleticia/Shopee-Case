@@ -3,6 +3,7 @@ package utils;
 import controller.SalesController;
 import controller.SellersController;
 import model.Sale;
+import repository.SaleRepository;
 import repository.SellerRepository;
 
 import java.math.BigDecimal;
@@ -22,6 +23,7 @@ public class MainMenu {
             System.out.println("1 - Show Sellers");
             System.out.println("2 - Add Sale");
             System.out.println("3 - Show Sales Ranking");
+            System.out.println("4 - Show Sales Ordered By Sales Amount");
             System.out.println("-1 - Exit From Marketplace");
             System.out.println("*************************************************************");
             System.out.println("Choose one of the options above by typing the corresponding value:");
@@ -29,46 +31,32 @@ public class MainMenu {
             menuOption = scanner.nextInt();
             switch (menuOption) {
                 case -1:
-                    MenuUtils.clearScreen();
+                    //MenuUtils.clearScreen();
                     System.out.println("Thanks for using the marketplace shopee, see you soon!");
-                    MenuUtils.clearScreen();
+                    //MenuUtils.clearScreen();
+                    break;
                 case 1:
-                    MenuUtils.clearScreen();
+                    //MenuUtils.clearScreen();
                     SellersController.showSellers();
                     break;
                 case 2:
-                    MenuUtils.clearScreen();
-                    Sale sale = new Sale();
-                    System.out.print("Type the Customer Name: ");
-                    String customerName = scanner.nextLine();
-                    sale.setCustomerName(customerName);
-                    System.out.print("Type the Sale Item Name: ");
-                    String saleItem = scanner.nextLine();
-                    scanner.nextLine();
-                    sale.setSaleItemName(saleItem);
-                    System.out.print("Type the Sale Value: ");
-                    String saleValue = scanner.nextLine();
-                    scanner.nextLine();
-                    sale.setSaleValue(new BigDecimal(saleValue));
-                    System.out.print("Type the Seller Name: ");
-                    String sellerName = scanner.nextLine();
-                    scanner.next();
-                    final String inputedSellerName = sellerName;
-                    System.out.print("Seller name is " + inputedSellerName);
-                    sale.setSeller(SellerRepository.sellers.stream().filter(seller -> inputedSellerName.equals(seller.getName())).findAny().orElseThrow());
-                    sale.getSeller().setSalesAmount(sale.getSeller().getSalesAmount() + 1);
-                    SalesController.insertSale(sale);
+                    //MenuUtils.clearScreen();
+                    SalesController.readSaleInput();
+                    System.out.print("\n");
                     SalesController.showSalesCallback();
-                    MenuUtils.clearScreen();
+                    //MenuUtils.clearScreen();
                     break;
                 case 3:
-                    MenuUtils.clearScreen();
-
+                    //MenuUtils.clearScreen();
+                    SalesController.showSalesCallback();
+                    break;
+                case 4:
+                    SalesController.showSalesBySellerSalesAmount();
                     break;
                 default:
-                    MenuUtils.clearScreen();
+                    //MenuUtils.clearScreen();
                     System.out.println("Incorrect option, please check available options and retype...");
-                    MenuUtils.clearScreen();
+                    //MenuUtils.clearScreen();
             }
         }
     }
