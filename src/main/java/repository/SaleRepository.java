@@ -12,7 +12,7 @@ public class SaleRepository {
         sales.add(sale);
     }
 
-    public static void showSalesCallback() {
+    public static void showSales() {
         for (Sale sale: sales) {
             System.out.println(sale.toString());
         }
